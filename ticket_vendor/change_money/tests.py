@@ -5,6 +5,8 @@ from django.test import TestCase
 from .views import _exchanging
 
 # Create your tests here.
+
+
 def simple_purchase(ticket_amount, ticket_price, money_paid):
     return _exchanging({
         "ticket_amount": ticket_amount,
@@ -12,6 +14,7 @@ def simple_purchase(ticket_amount, ticket_price, money_paid):
         "money_paid": money_paid,
         "denomination_list": [1000, 500, 100, 50, 10, 5, 1]
     })
+
 
 class TestExchange(TestCase):
 
@@ -43,7 +46,6 @@ class TestExchange(TestCase):
 
         exchange, total_amount = simple_purchase(2, 10, 30.2)
         self.assertIsNone(exchange)
-
 
     def test_exchange(self):
 
@@ -79,5 +81,3 @@ class TestExchange(TestCase):
 
         exchange, total_amount = simple_purchase(2, -10, 30.2)
         self.assertIsNone(exchange)
-
-

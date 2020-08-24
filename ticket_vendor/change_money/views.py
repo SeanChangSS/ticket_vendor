@@ -11,8 +11,10 @@ from .forms import PurchaseForm
 
 # Create your views here.
 
+
 def index(request):
     return render(request, 'change_money/index.html', {})
+
 
 def buy_ticket(request):
     denomination_list = [1000, 500, 100, 50, 10, 5, 1]
@@ -41,7 +43,6 @@ def buy_ticket(request):
                     return render(request, 'change_money/index.html', {"alert": "Something goes wrong."})
 
                 return render(request, 'change_money/index.html', {"alert": "Your exchange is: {}".format(exchange)})
-
 
     return render(request, 'change_money/index.html', {"alert": "Something goes wrong."})
 
@@ -76,6 +77,7 @@ def _exchanging(purchase_info):
 
     return None, None
 
+
 def _to_integer(e):
     if isinstance(e, int) and not isinstance(e, bool):
         if e > 0:
@@ -86,4 +88,3 @@ def _to_integer(e):
             return int(e)
         raise TypeError('Please insert positive integer.')
     raise TypeError('Please insert positive integer.')
-
